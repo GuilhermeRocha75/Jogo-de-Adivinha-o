@@ -6,16 +6,15 @@ document.getElementById('jogar').addEventListener('click', function() {
         document.getElementById('nomeUsuario').textContent = nomeUsuario;
         document.getElementById('telaBemvindo').style.display = 'none';
         document.getElementById('telaJogo').style.display = 'block';
+        iniciarJogo();
     } else {
         alert('Por favor, insira seu nome para jogar!');
     }
 });
 
-// Tela de Jogo
-if (localStorage.getItem('nomeUsuario')) {
+function iniciarJogo() {
     const numeroCorreto = Math.floor(Math.random() * 100) + 1;
     let tentativas = 0;
-
     document.getElementById('palpiteForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const palpite = parseInt(document.getElementById('palpite').value);
@@ -85,12 +84,15 @@ function mostrarPosicao(nome, pontos) {
 
 // Tela de Resultado
 document.getElementById('jogarNovamente').addEventListener('click', function() {
-    localStorage.removeItem('nomeUsuario');
-    localStorage.removeItem('pontos');
+    localStorage.removeItem('pontos'); // Remover a pontuação do armazenamento local
     localStorage.removeItem('numeroCorreto');
+    document.getElementById('nome').value = ''; // Limpar o campo de entrada de nome
+    document.getElementById('feedback').textContent = ''; // Limpar o feedback
+    document.getElementById('palpite').value = ''; // Limpar o campo de palpite
     document.getElementById('telaResultado').style.display = 'none';
     document.getElementById('telaBemvindo').style.display = 'block';
 });
+
 
 // Controle da música
 const audioFundo = document.getElementById('audioFundo');
