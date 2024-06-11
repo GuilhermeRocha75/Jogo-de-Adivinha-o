@@ -6,20 +6,15 @@
     <title>Jogo de Adivinhação</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-
 <audio id="audioFundo" src="./Wii Music - Gaming Background Music (HD) (320).mp3" autoplay loop></audio>
-
 <body>
-
     <button id="toggleMusica" class="music-button">🔊 Desativar Música</button>
-
     <div id="telaBemvindo" class="container">
         <h1>Bem-vindo ao Jogo de Adivinhação!</h1>
         <p>Por favor, insira seu nome para começar.</p>
         <input type="text" id="nome" placeholder="Seu nome..." required>
         <button id="jogar">Jogar</button>
     </div>
-
     <div id="telaJogo" class="container" style="display:none;">
         <h1>Bem-vindo, <span id="nomeUsuario"></span>!</h1>
         <p>Tente adivinhar o número entre 1 e 100.</p>
@@ -30,15 +25,23 @@
         </form>
         <p id="feedback"></p>
     </div>
-
     <div id="telaResultado" class="container" style="display:none;">
         <h1>Parabéns, <span id="resultadoNome"></span>!</h1>
         <p>Você adivinhou o número!</p>
         <p>O número correto era: <span id="numeroCorreto"></span>.</p>
         <p>Sua pontuação final: <span id="pontos"></span>.</p>
         <button id="jogarNovamente">Jogar Novamente</button>
+        <h2>Ranking:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Pontos</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaRanking"></tbody>
+        </table>
     </div>
-
     <script src="./script.js"></script>
 </body>
 </html>
