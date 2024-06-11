@@ -43,7 +43,7 @@ tbody tr:nth-child(even) {
 }
 
 .container {
-    width: 100%;
+    width: 90%;
     max-width: 600px;
     padding: 20px;
     background-color: #fff;
@@ -52,6 +52,9 @@ tbody tr:nth-child(even) {
     text-align: center;
     animation: rgbBorder 5s infinite;
     border: 5px solid;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 80vh;
 }
 
 body {
@@ -169,4 +172,36 @@ button:hover {
 
 #mensagemPosicao .posicaoRanking {
     color: #2196f3;
+}
+
+.ranking-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+@media (max-height: 600px) {
+    .container {
+        max-height: 70vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    .music-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }
