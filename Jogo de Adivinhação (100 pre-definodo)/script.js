@@ -33,6 +33,7 @@ if (localStorage.getItem('nomeUsuario')) {
                 localStorage.setItem('numeroCorreto', numeroCorreto);
                 salvarPontuacao(localStorage.getItem('nomeUsuario'), tentativas);
                 mostrarRanking();
+                mostrarPosicao(localStorage.getItem('nomeUsuario'), tentativas);
                 document.getElementById('telaJogo').style.display = 'none';
                 document.getElementById('telaResultado').style.display = 'block';
                 document.getElementById('resultadoNome').textContent = localStorage.getItem('nomeUsuario');
@@ -50,19 +51,18 @@ if (localStorage.getItem('nomeUsuario')) {
 // Função para salvar pontuação
 function salvarPontuacao(nome, pontos) {
     let ranking = JSON.parse(localStorage.getItem('ranking')) || [];
-    ranking.push({ nome, pontos });
+    ranking.push({ nome: nome, pontos: pontos });
+    ranking.sort((a, b) => a.pontos - b.pontos);  // Ordena por pontos em ordem crescente
     localStorage.setItem('ranking', JSON.stringify(ranking));
 }
 
-// Função para mostrar ranking
+// Função para mostrar o ranking
 function mostrarRanking() {
-    let ranking = JSON.parse(localStorage.getItem('ranking')) || [];
-    ranking.sort((a, b) => a.pontos - b.pontos);
-
+    const ranking = JSON.parse(localStorage.getItem('ranking')) || [];
     const tabelaRanking = document.getElementById('tabelaRanking');
     tabelaRanking.innerHTML = '';
 
-    ranking.forEach(jogador => {
+    ranking.forEach((jogador, index) => {
         const row = document.createElement('tr');
         const nomeCell = document.createElement('td');
         const pontosCell = document.createElement('td');
@@ -72,6 +72,15 @@ function mostrarRanking() {
         row.appendChild(pontosCell);
         tabelaRanking.appendChild(row);
     });
+}
+
+// Função para mostrar a posição do jogador no ranking
+function mostrarPosicao(nome, pontos) {
+    const ranking = JSON.parse(localStorage.getItem('ranking')) || [];
+    let posicao = ranking.findIndex(jogador => jogador.nome === nome && jogador.pontos === pontos) + 1;
+
+    const mensagemPosicao = document.getElementById('mensagemPosicao');
+    mensagemPosicao.innerHTML = `<span class="nomeJogador">${nome}</span>, você está na posição <span class="posicaoRanking">${posicao}°</span> do ranking de jogadores.`;
 }
 
 // Tela de Resultado

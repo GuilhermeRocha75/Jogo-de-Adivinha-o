@@ -1,14 +1,45 @@
-body {
-    font-family: Arial, sans-serif;
-    
-    background: rgb(63,220,251);
-background: radial-gradient(circle, rgba(63,220,251,1) 0%, rgba(70,72,252,1) 100%);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Estilização da tabela de ranking */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #4caf50;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Animação de borda RGB */
+@keyframes rgbBorder {
+    0% {
+        border-color: rgb(255, 0, 0);
+    }
+    25% {
+        border-color: rgb(0, 255, 0);
+    }
+    50% {
+        border-color: rgb(0, 0, 255);
+    }
+    75% {
+        border-color: rgb(255, 255, 0);
+    }
+    100% {
+        border-color: rgb(255, 0, 0);
+    }
 }
 
 .container {
@@ -19,6 +50,20 @@ background: radial-gradient(circle, rgba(63,220,251,1) 0%, rgba(70,72,252,1) 100
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    animation: rgbBorder 5s infinite;
+    border: 5px solid;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(63,220,251);
+    background: radial-gradient(circle, rgba(63,220,251,1) 0%, rgba(70,72,252,1) 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 h1 {
@@ -111,27 +156,17 @@ button:hover {
     margin-top: 30px;
 }
 
-/* Estilização da tabela de ranking */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* Estilização da mensagem de posição */
+#mensagemPosicao {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
+#mensagemPosicao .nomeJogador {
+    color: #ff5722;
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-}
-
-th {
-    background-color: #4caf50;
-    color: white;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+#mensagemPosicao .posicaoRanking {
+    color: #2196f3;
 }
