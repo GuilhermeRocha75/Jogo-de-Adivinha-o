@@ -6,8 +6,8 @@
     <title>Jogo de Adivinhação</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-<audio id="audioFundo" src="./Wii Music - Gaming Background Music (HD) (320).mp3" autoplay loop></audio>
 <body>
+    <audio id="audioFundo" src="./Wii Music - Gaming Background Music (HD) (320).mp3" autoplay loop></audio>
     <button id="toggleMusica" class="music-button">🔊 Desativar Música</button>
     <div id="telaBemvindo" class="container">
         <h1>Bem-vindo ao Jogo de Adivinhação!</h1>
@@ -15,6 +15,7 @@
         <input type="text" id="nome" placeholder="Seu nome..." required>
         <button id="jogar">Jogar</button>
     </div>
+
     <div id="telaJogo" class="container" style="display:none;">
         <h1>Bem-vindo, <span id="nomeUsuario"></span>!</h1>
         <p>Tente adivinhar o número entre 1 e 100.</p>
@@ -25,6 +26,7 @@
         </form>
         <p id="feedback"></p>
     </div>
+
     <div id="telaResultado" class="container" style="display:none;">
         <h1>Parabéns, <span id="resultadoNome"></span>!</h1>
         <p>Você adivinhou o número!</p>
@@ -32,6 +34,7 @@
         <p>Sua pontuação final: <span id="pontos"></span>.</p>
         <p id="mensagemPosicao"></p>
         <button id="jogarNovamente">Jogar Novamente</button>
+        <button id="enviarFeedback" onclick="mostrarFormularioFeedback()">Envie um Feedback</button>
         <h2>Ranking:</h2>
         <div class="ranking-container">
             <table>
@@ -45,6 +48,26 @@
             </table>
         </div>
     </div>
+
+    
+    <div id="feedbackForm" class="container" style="display:none;">
+        <h1>Envie seu Feedback</h1>
+        <form id="feedbackFormulario" action="https://formsubmit.co/backupitensguilhermerocha@gmail.com" method="POST">
+            <label for="nomeFeedback">Nome:</label>
+            <input type="text" id="nomeFeedback" name="name" required><br>
+            <label for="emailFeedback">Email:</label>
+            <input type="email" id="emailFeedback" name="email" required><br>
+            <label for="comentarioFeedback">Comentário:</label><br>
+            <textarea id="comentarioFeedback" name="message" rows="4" required></textarea><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div id="feedbackEnviado" class="container" style="display:none;">
+        <h1>Feedback Enviado</h1>
+        <p>Obrigado pelo seu feedback!</p>
+    </div>
+
     <script src="./script.js"></script>
 </body>
 </html>

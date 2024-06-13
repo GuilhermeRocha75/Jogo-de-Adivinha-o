@@ -2,11 +2,21 @@
 document.getElementById('jogar').addEventListener('click', function() {
     const nomeUsuario = document.getElementById('nome').value.trim();
     if (nomeUsuario !== '') {
-        localStorage.setItem('nomeUsuario', nomeUsuario);
-        document.getElementById('nomeUsuario').textContent = nomeUsuario;
-        document.getElementById('telaBemvindo').style.display = 'none';
-        document.getElementById('telaJogo').style.display = 'block';
-        iniciarJogo();
+        if (nomeUsuario === 'XuxaMeneguel') {
+            // Se o nome for "XuxaMeneguel", redireciona diretamente para a tela de resultado sem adicionar ao ranking
+            document.getElementById('resultadoNome').textContent = nomeUsuario;
+            document.getElementById('pontos').textContent = 'Você usou um cheat!';
+            document.getElementById('numeroCorreto').textContent = 'Confidencial';
+            document.getElementById('mensagemPosicao').textContent = 'Cheat ativado, seu nome não será adicionado ao ranking.';
+            document.getElementById('telaBemvindo').style.display = 'none';
+            document.getElementById('telaResultado').style.display = 'block';
+        } else {
+            localStorage.setItem('nomeUsuario', nomeUsuario);
+            document.getElementById('nomeUsuario').textContent = nomeUsuario;
+            document.getElementById('telaBemvindo').style.display = 'none';
+            document.getElementById('telaJogo').style.display = 'block';
+            iniciarJogo();
+        }
     } else {
         alert('Por favor, insira seu nome para jogar!');
     }
@@ -107,3 +117,15 @@ toggleMusicaButton.addEventListener('click', function() {
         toggleMusicaButton.textContent = '🔈 Ativar Música';
     }
 });
+
+// Método para mostrar o formulário de feedback
+function mostrarFormularioFeedback() {
+    document.getElementById('telaResultado').style.display = 'none';
+    document.getElementById('feedbackForm').style.display = 'block';
+};
+
+// Método para mostrar a tela de feedback enviada
+function feedbackenviado() {
+    document.getElementById('feedbackForm').style.display = 'none';
+    document.getElementById('feedbackEnviado').style.display = 'block';
+}

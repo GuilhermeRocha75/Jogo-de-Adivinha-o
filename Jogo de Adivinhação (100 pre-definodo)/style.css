@@ -205,3 +205,23 @@ button:hover {
         padding: 8px 16px;
     }
 }
+
+.feedback-container {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px auto;
+    animation: rgbBorder 5s infinite;
+    border: 5px solid;
+    box-sizing: border-box;
+}
+
+#feedbackForm,
+#feedbackEnviado {
+    display: none;
+}
+
