@@ -3,7 +3,7 @@ document.getElementById('jogar').addEventListener('click', function() {
     const nomeUsuario = document.getElementById('nome').value.trim();
     if (nomeUsuario !== '') {
         if (nomeUsuario === 'XuxaMeneguel') {
-            // Se o nome for "XuxaMeneguel", redireciona diretamente para a tela de resultado sem adicionar ao ranking
+         
             document.getElementById('resultadoNome').textContent = nomeUsuario;
             document.getElementById('pontos').textContent = 'Você usou um cheat!';
             document.getElementById('numeroCorreto').textContent = 'Confidencial';
@@ -124,8 +124,12 @@ function mostrarFormularioFeedback() {
     document.getElementById('feedbackForm').style.display = 'block';
 };
 
-// Método para mostrar a tela de feedback enviada
-function feedbackenviado() {
+// Função para enviar o feedback
+document.getElementById('feedbackFormulario').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+
+    // Exibe a tela de feedback enviado e oculta o formulário
     document.getElementById('feedbackForm').style.display = 'none';
     document.getElementById('feedbackEnviado').style.display = 'block';
-}
+});
