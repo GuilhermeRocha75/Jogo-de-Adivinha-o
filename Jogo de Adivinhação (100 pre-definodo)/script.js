@@ -133,3 +133,17 @@ document.getElementById('feedbackFormulario').addEventListener('submit', functio
     document.getElementById('feedbackForm').style.display = 'none';
     document.getElementById('feedbackEnviado').style.display = 'block';
 });
+
+// Tela de Agradecimento pelo Feedback
+document.getElementById('jogarNovamenteFeedback').addEventListener('click', function() {
+    localStorage.removeItem('pontos'); // Remover a pontuação do armazenamento local
+    localStorage.removeItem('numeroCorreto');
+    document.getElementById('feedbackEnviado').style.display = 'none';
+    document.getElementById('telaBemvindo').style.display = 'block';
+    localStorage.removeItem('numeroCorreto');
+    document.getElementById('nome').value = ''; // Limpar o campo de entrada de nome
+    document.getElementById('feedback').textContent = ''; // Limpar o feedback
+    document.getElementById('palpite').value = ''; // Limpar o campo de palpite
+    document.getElementById('telaResultado').style.display = 'none';
+    document.getElementById('telaBemvindo').style.display = 'block';
+});
