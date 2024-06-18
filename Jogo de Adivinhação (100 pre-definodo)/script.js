@@ -18,6 +18,7 @@ document.getElementById('jogar').addEventListener('click', function() {
             document.getElementById('nomeUsuario').textContent = nomeUsuario;
             document.getElementById('telaBemvindo').style.display = 'none';
             document.getElementById('telaJogo').style.display = 'block';
+            document.getElementById('palpite').focus();
             iniciarJogo();
         }
     } else {
@@ -61,6 +62,9 @@ function processarPalpite(event) {
         } else {
             feedback.textContent = 'Tente um número menor.';
         }
+
+         // Limpar o input após o palpite
+         document.getElementById('palpite').value = '';
     }
 }
 
@@ -111,6 +115,9 @@ document.getElementById('jogarNovamente').addEventListener('click', function() {
     document.getElementById('palpite').value = ''; // Limpar o campo de palpite
     document.getElementById('telaResultado').style.display = 'none';
     document.getElementById('telaBemvindo').style.display = 'block';
+    // Limpa o input de palpite ao jogar novamente
+    document.getElementById('palpite').value = '';
+
     iniciarJogo();
 });
 
