@@ -310,10 +310,32 @@ button:hover {
     color: #fff;
   }
 
- .enviar{
-    margin-top: 20px;
-    
- }
+
+
+
+  #feedbackForm {
+    position: relative;
+  }
+  
+  /* CSS para o novo botão "Enviar" na tela de feedbacks */
+  #feedbackFormulario .enviar {
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: absolute; /* Para posicionamento absoluto dentro do contêiner */
+    bottom: 20px; /* Distância do botão para o fundo do contêiner */
+    right: 20px; /* Distância do botão para a direita do contêiner */
+  }
   
   button span {
     display: block;
