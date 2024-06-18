@@ -58,7 +58,7 @@ tbody tr:nth-child(even) {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background: rgb(63,220,251);
     background: radial-gradient(circle, rgba(63,220,251,1) 0%, rgba(70,72,252,1) 100%);
     margin: 0;

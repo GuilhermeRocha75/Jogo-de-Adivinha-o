@@ -1,9 +1,12 @@
+// Variável global para armazenar o número correto
+let numeroCorreto;
+let tentativas;
+
 // Tela de Boas-vindas
 document.getElementById('jogar').addEventListener('click', function() {
     const nomeUsuario = document.getElementById('nome').value.trim();
     if (nomeUsuario !== '') {
-        if (nomeUsuario === 'XuxaMeneguel') {
-         
+        if (nomeUsuario === 'xicara22') {
             document.getElementById('resultadoNome').textContent = nomeUsuario;
             document.getElementById('pontos').textContent = 'Você usou um cheat!';
             document.getElementById('numeroCorreto').textContent = 'Confidencial';
@@ -23,39 +26,46 @@ document.getElementById('jogar').addEventListener('click', function() {
 });
 
 function iniciarJogo() {
-    const numeroCorreto = Math.floor(Math.random() * 100) + 1;
-    let tentativas = 0;
-    document.getElementById('palpiteForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const palpite = parseInt(document.getElementById('palpite').value);
-        const feedback = document.getElementById('feedback');
-
-        // Verifica se o número inserido é válido
-        if (isNaN(palpite) || palpite < 1 || palpite > 100) {
-            feedback.textContent = 'Por favor, insira um número válido entre 1 e 100.';
-        } else {
-            tentativas++;
-
-            // Verifica o palpite
-            if (palpite === numeroCorreto) {
-                localStorage.setItem('pontos', tentativas);
-                localStorage.setItem('numeroCorreto', numeroCorreto);
-                salvarPontuacao(localStorage.getItem('nomeUsuario'), tentativas);
-                mostrarRanking();
-                mostrarPosicao(localStorage.getItem('nomeUsuario'), tentativas);
-                document.getElementById('telaJogo').style.display = 'none';
-                document.getElementById('telaResultado').style.display = 'block';
-                document.getElementById('resultadoNome').textContent = localStorage.getItem('nomeUsuario');
-                document.getElementById('pontos').textContent = tentativas;
-                document.getElementById('numeroCorreto').textContent = numeroCorreto;
-            } else if (palpite < numeroCorreto) {
-                feedback.textContent = 'Tente um número maior.';
-            } else {
-                feedback.textContent = 'Tente um número menor.';
-            }
-        }
-    });
+    numeroCorreto = Math.floor(Math.random() * 100) + 1;
+    tentativas = 0;
+    document.getElementById('feedback').textContent = ''; // Limpar feedback
+    document.getElementById('palpite').value = ''; // Limpar campo de palpite
 }
+
+// Função para processar o palpite
+function processarPalpite(event) {
+    event.preventDefault();
+    const palpite = parseInt(document.getElementById('palpite').value);
+    const feedback = document.getElementById('feedback');
+
+    // Verifica se o número inserido é válido
+    if (isNaN(palpite) || palpite < 1 || palpite > 100) {
+        feedback.textContent = 'Por favor, insira um número válido entre 1 e 100.';
+    } else {
+        tentativas++;
+
+        // Verifica o palpite
+        if (palpite === numeroCorreto) {
+            localStorage.setItem('pontos', tentativas);
+            localStorage.setItem('numeroCorreto', numeroCorreto);
+            salvarPontuacao(localStorage.getItem('nomeUsuario'), tentativas);
+            mostrarRanking();
+            mostrarPosicao(localStorage.getItem('nomeUsuario'), tentativas);
+            document.getElementById('telaJogo').style.display = 'none';
+            document.getElementById('telaResultado').style.display = 'block';
+            document.getElementById('resultadoNome').textContent = localStorage.getItem('nomeUsuario');
+            document.getElementById('pontos').textContent = tentativas;
+            document.getElementById('numeroCorreto').textContent = numeroCorreto;
+        } else if (palpite < numeroCorreto) {
+            feedback.textContent = 'Tente um número maior.';
+        } else {
+            feedback.textContent = 'Tente um número menor.';
+        }
+    }
+}
+
+// Adiciona o ouvinte de evento de envio ao formulário de palpite
+document.getElementById('palpiteForm').addEventListener('submit', processarPalpite);
 
 // Função para salvar pontuação
 function salvarPontuacao(nome, pontos) {
@@ -101,8 +111,8 @@ document.getElementById('jogarNovamente').addEventListener('click', function() {
     document.getElementById('palpite').value = ''; // Limpar o campo de palpite
     document.getElementById('telaResultado').style.display = 'none';
     document.getElementById('telaBemvindo').style.display = 'block';
+    iniciarJogo();
 });
-
 
 // Controle da música
 const audioFundo = document.getElementById('audioFundo');
@@ -122,12 +132,11 @@ toggleMusicaButton.addEventListener('click', function() {
 function mostrarFormularioFeedback() {
     document.getElementById('telaResultado').style.display = 'none';
     document.getElementById('feedbackForm').style.display = 'block';
-};
+}
 
 // Função para enviar o feedback
 document.getElementById('feedbackFormulario').addEventListener('submit', function(event) {
     event.preventDefault(); // Impede o envio padrão do formulário
-
 
     // Exibe a tela de feedback enviado e oculta o formulário
     document.getElementById('feedbackForm').style.display = 'none';
@@ -140,10 +149,10 @@ document.getElementById('jogarNovamenteFeedback').addEventListener('click', func
     localStorage.removeItem('numeroCorreto');
     document.getElementById('feedbackEnviado').style.display = 'none';
     document.getElementById('telaBemvindo').style.display = 'block';
-    localStorage.removeItem('numeroCorreto');
     document.getElementById('nome').value = ''; // Limpar o campo de entrada de nome
     document.getElementById('feedback').textContent = ''; // Limpar o feedback
     document.getElementById('palpite').value = ''; // Limpar o campo de palpite
     document.getElementById('telaResultado').style.display = 'none';
     document.getElementById('telaBemvindo').style.display = 'block';
+    iniciarJogo();
 });
