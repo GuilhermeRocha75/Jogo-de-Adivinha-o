@@ -10,7 +10,7 @@
     <audio id="audioFundo" src="./Wii Music - Gaming Background Music (HD) (320).mp3" autoplay loop></audio>
     <button id="toggleMusica" class="music-button">🔊 Desativar Música</button>
     <div id="telaBemvindo" class="container">
-        <h1>Bem-vindo ao Jogo de Adivinhação!</h1>
+        <h1>Bem-vindo ao Jogo de<span class="highlight">Adivinhação</span>!</h1>
         <p>Por favor, insira seu nome para começar.</p>
         <input type="text" id="nome" placeholder="Seu nome..." required>
         <button id="jogar" class="glow-on-hover" type="button">JOGAR</button>
@@ -57,7 +57,7 @@
           
 
             <input type="text" id="nomeFeedback" autocomplete="off" name="name" class="input" placeholder="Nome..." required><br>
-            <input type="text" id="emailFeedback" autocomplete="off" name="name" class="input" placeholder="Email..." required><br>
+            <input type="text" id="emailFeedback" autocomplete="off" name="email" class="input" placeholder="Email..." required><br>
 
             
             <label for="comentarioFeedback">Comentário:</label><br>
@@ -75,7 +75,7 @@
                 <label for="star1"></label>
               </div>
               
-            <button class="enviar">
+            <button type="submit" class="enviar">
                 <div class="svg-wrapper-1">
                     <div class="svg-wrapper">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -92,7 +92,10 @@
     <div id="feedbackEnviado" class="container" style="display:none;">
         <h1>Feedback Enviado</h1>
         <p>Obrigado pelo seu feedback!</p>
-        <button id="jogarNovamenteFeedback">Jogar Novamente</button>
+  
+        <button id="jogarNovamenteFeedback" class="btn-12"><span>Jogar Novamente</span></button>
+
+        
     </div>
 
     <script src="./script.js"></script>
