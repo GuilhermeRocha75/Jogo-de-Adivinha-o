@@ -13,6 +13,7 @@ document.getElementById('jogar').addEventListener('click', function() {
             document.getElementById('mensagemPosicao').textContent = 'Cheat ativado, seu nome não será adicionado ao ranking.';
             document.getElementById('telaBemvindo').style.display = 'none';
             document.getElementById('telaResultado').style.display = 'block';
+            mostrarRanking();
         } else {
             localStorage.setItem('nomeUsuario', nomeUsuario);
             document.getElementById('nomeUsuario').textContent = nomeUsuario;
